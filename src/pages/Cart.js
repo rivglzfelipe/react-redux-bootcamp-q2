@@ -1,17 +1,15 @@
-import React, { useEffect, useState } from 'react';
+import React from'react' //{ useEffect, useState } from 'react';
 import { 
   CartContainer,
   ProductCartContainer
 } from '../components/Cart/CartStyles';
-import { cartMockData } from '../mock/mockData';
+import { useSelector } from 'react-redux';
+//import { cartMockData } from '../mock/mockData';
 import { ItemCart } from '../components/Cart/ItemCart';
 import { SummaryConponent } from '../components/SummaryComponet/SummaryComponent';
 
 export const Cart = () => {
-  const [cart, setCart] = useState([]);
-  useEffect(() => {
-    setCart([...cartMockData])
-  }, []);
+  const cart = useSelector((state)=>state.cart.cart);
   
   return (
     <CartContainer>

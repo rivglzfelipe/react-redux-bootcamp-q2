@@ -9,7 +9,7 @@ export const ItemCart  = (props) => {
                 <ProductComponet item={product} />
             </td>
             <td>
-                <QuantityElement quantity={quantity} />
+                <QuantityElement quantity={quantity} id={product.id} />
             </td>
             <td>${product.price}</td>
             <td>${product.price * quantity}</td>

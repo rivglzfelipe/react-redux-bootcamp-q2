@@ -8,6 +8,9 @@ import {
     CardContainer, 
     ImgContainer
 } from './CardStyles';
+import {useDispatch} from 'react-redux';
+import { add } from './../../app/cart.ts';
+
 
 const Imagen = ({srcImg, name}) => (
     <ImgContainer>
@@ -16,16 +19,20 @@ const Imagen = ({srcImg, name}) => (
 
 )
 
-const Info = ({name, categories, price}) =>
-(
-    <InfoContainer>
-        <ProductName>{name}</ProductName>
-        <Categories>{categories[0]}</Categories>
-        <Price>{`$${price}`}</Price>
-        <Button>Add to cart</Button>
-    </InfoContainer> 
-);
-
+const Info = (props) => {
+    const dispatch = useDispatch();
+    const {name, categories, price } = props;
+    return (
+        <InfoContainer>
+            <ProductName>{name}</ProductName>
+            <Categories>{categories[0]}</Categories>
+            <Price>{`$${price}`}</Price>
+            <Button onClick={() => dispatch(add(props))}>
+                Add to cart
+            </Button>
+        </InfoContainer> 
+    );
+}
 export const Card = (props) => {
     const {name, images} = props.data;
     return (
